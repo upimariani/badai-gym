@@ -13,7 +13,7 @@ class cCheckout extends CI_Controller
 	public function pesan()
 	{
 		$data = array(
-			'id_pelanggan' => '1',
+			'id_pelanggan' => $this->session->userdata('id_pelanggan'),
 			'tgl_transaksi' => date('Y-m-d'),
 			'total_bayar' => $this->input->post('total_pembayaran'),
 			'ongkir' => $this->input->post('ongkir'),

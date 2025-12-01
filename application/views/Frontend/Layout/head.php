@@ -30,6 +30,24 @@
 
 	<!-- Template Stylesheet -->
 	<link href="<?= base_url('asset/Electro/') ?>css/style.css" rel="stylesheet">
+	<style>
+		#chat2 .form-control {
+			border-color: transparent;
+		}
+
+		#chat2 .form-control:focus {
+			border-color: transparent;
+			box-shadow: inset 0px 0px 0px 1px transparent;
+		}
+
+		.divider:after,
+		.divider:before {
+			content: "";
+			flex: 1;
+			height: 1px;
+			background: #eee;
+		}
+	</style>
 </head>
 
 <body>
@@ -61,12 +79,24 @@
 
 			<div class="col-lg-4 text-center text-lg-end">
 				<div class="d-inline-flex align-items-center" style="height: 45px;">
-
+					<?php
+					$pelanggan = $this->db->query("SELECT * FROM `pelanggan` WHERE id_pelanggan='" . $this->session->userdata('id_pelanggan') . "'")->row();
+					?>
 					<div class="dropdown">
-						<a href="#" class="dropdown-toggle text-muted ms-2" data-bs-toggle="dropdown"><small><i class="fa fa-home me-2"></i> My Dashboard</small></a>
+						<a href="#" class="dropdown-toggle text-muted ms-2" data-bs-toggle="dropdown"><small><i class="fa fa-home me-2"> Selamat Datang, </i> <?= $pelanggan->nama ?> <span class="badge bg-warning">
+									<?php
+									if ($pelanggan->level_member == '1') {
+										echo 'Classic';
+									} else if ($pelanggan->level_member == '2') {
+										echo 'Silver';
+									} else {
+										echo 'Gold';
+									}
+									?>
+								</span></small></a>
 						<div class="dropdown-menu rounded">
 
-							<a href="#" class="dropdown-item"> Log Out</a>
+							<a href="<?= base_url('Frontend/cLogin/logout') ?>" class="dropdown-item"> Log Out</a>
 						</div>
 					</div>
 				</div>
@@ -132,9 +162,9 @@
 							<a href="<?= base_url('Frontend/cHome') ?>" class="nav-item nav-link active">Home</a>
 							<a href="<?= base_url('Frontend/cKatalog') ?>" class="nav-item nav-link">Produk</a>
 							<a href="<?= base_url('Frontend/cPesanan') ?>" class="nav-item nav-link">Pesanan</a>
-							<a href="single.html" class="nav-item nav-link">Membership</a>
-							<a href="contact.html" class="nav-item nav-link me-2">Akun</a>
-							<a href="contact.html" class="nav-item nav-link me-2">Pesan</a>
+							<a href="<?= base_url('Frontend/cMembership') ?>" class="nav-item nav-link">Membership</a>
+							<a href="<?= base_url('Frontend/cAkun') ?>" class="nav-item nav-link me-2">Akun</a>
+							<a href="<?= base_url('Frontend/cChatting') ?>" class="nav-item nav-link me-2">Pesan</a>
 
 						</div>
 
