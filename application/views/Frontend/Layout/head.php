@@ -13,6 +13,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
+	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-aA8f0UCipTotLFTy"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 	<!-- Icon Font Stylesheet -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -89,9 +92,20 @@
 			</div>
 			<div class="col-md-4 col-lg-3 text-center text-lg-end">
 				<div class="d-inline-flex align-items-center">
-
-					<a href="<?= base_url('Frontend/cCart') ?>" class="text-muted d-flex align-items-center justify-content-center"><span class="rounded-circle btn-md-square border"><i class="fas fa-shopping-cart"></i></span>
-						<span class="text-dark ms-2">$0.00</span></a>
+					<?php
+					$price = 0;
+					$qty = 0;
+					foreach ($this->cart->contents() as $key => $value) {
+						$qty += $value['qty'];
+						$price += $value['price'];
+					}
+					if ($qty != '0') {
+					?>
+						<a href="<?= base_url('Frontend/cCart') ?>" class="text-muted d-flex align-items-center justify-content-center"><span class="rounded-circle btn-md-square border"><i class="fas fa-shopping-cart"></i><span class="badge bg-warning"><?= $qty ?></span></span>
+							<span class="text-dark ms-2">Rp. <?= number_format($price) ?></span></a>
+					<?php
+					}
+					?>
 				</div>
 			</div>
 		</div>
@@ -117,6 +131,7 @@
 						<div class="navbar-nav ms-auto py-0">
 							<a href="<?= base_url('Frontend/cHome') ?>" class="nav-item nav-link active">Home</a>
 							<a href="<?= base_url('Frontend/cKatalog') ?>" class="nav-item nav-link">Produk</a>
+							<a href="<?= base_url('Frontend/cPesanan') ?>" class="nav-item nav-link">Pesanan</a>
 							<a href="single.html" class="nav-item nav-link">Membership</a>
 							<a href="contact.html" class="nav-item nav-link me-2">Akun</a>
 							<a href="contact.html" class="nav-item nav-link me-2">Pesan</a>

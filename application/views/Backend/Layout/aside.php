@@ -74,7 +74,7 @@
 				<div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Transaksi</div>
 				<ul class="pcoded-item pcoded-left-item">
 					<li>
-						<a href="form-elements-component.html">
+						<a href="<?= base_url('Backend/cTransaksiProduk') ?>">
 							<span class="pcoded-micon"><i class="ti-bag"></i><b>FC</b></span>
 							<span class="pcoded-mtext" data-i18n="nav.form-components.main">Produk</span>
 							<span class="pcoded-mcaret"></span>

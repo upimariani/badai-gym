@@ -38,6 +38,9 @@
 	$('#myTable').DataTable({
 		select: true
 	});
+	$('.tbl').DataTable({
+		select: true
+	});
 </script>
 </body>
 
