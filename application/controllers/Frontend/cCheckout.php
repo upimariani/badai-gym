@@ -38,7 +38,7 @@ class cCheckout extends CI_Controller
 		}
 		$this->cart->destroy();
 		$this->session->set_flashdata('success', 'Pesanan berhasil dipesan!');
-		redirect('Frontend/cKatalog');
+		redirect('Frontend/cPesanan');
 	}
 }
 

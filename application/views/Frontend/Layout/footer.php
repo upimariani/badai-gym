@@ -141,7 +141,16 @@
 
 	});
 </script>
+<link href="<?= base_url('asset/') ?>datatables/datatables.min.css" rel="stylesheet">
 
+<script src="<?= base_url('asset/') ?>datatables/datatables.min.js"></script>
+
+
+<script>
+	$('#myTable').DataTable({
+		select: true
+	});
+</script>
 </body>
 
 </html>

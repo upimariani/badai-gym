@@ -131,8 +131,17 @@
 											<option value="">Pilih Paket Membership</option>
 											<?php
 											foreach ($paket as $key => $value) {
+												if ($value->lev_member == $this->session->userdata('level_member')) {
+													$disc = $value->disc / 100;
+													$nama_diskon = $value->nama_diskon;
+												} else {
+													$disc = 0;
+													$nama_diskon = '';
+												}
 											?>
-												<option data-masa="<?= $value->masa_berlaku ?>" data-harga="<?= $value->harga - (($value->disc / 100) * $value->harga) ?>" value="<?= $value->id_paket ?>"><?= $value->nama_paket ?> <?= $value->masa_berlaku ?> hari (<?= $value->nama_diskon ?>) <u>Rp. <?= number_format($value->harga - (($value->disc / 100) * $value->harga)) ?></u> </option>
+												<option data-masa="<?= $value->masa_berlaku ?>" data-harga="<?= $value->harga - (($disc) * $value->harga) ?>" value="<?= $value->id_paket ?>">
+													<?= $value->nama_paket ?> <?= $value->masa_berlaku ?> hari
+													<?= $nama_diskon ?> <u>Rp. <?= number_format($value->harga - (($disc) * $value->harga)) ?></u> </option>
 											<?php
 											}
 											?>

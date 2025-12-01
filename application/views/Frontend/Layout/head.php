@@ -30,24 +30,7 @@
 
 	<!-- Template Stylesheet -->
 	<link href="<?= base_url('asset/Electro/') ?>css/style.css" rel="stylesheet">
-	<style>
-		#chat2 .form-control {
-			border-color: transparent;
-		}
 
-		#chat2 .form-control:focus {
-			border-color: transparent;
-			box-shadow: inset 0px 0px 0px 1px transparent;
-		}
-
-		.divider:after,
-		.divider:before {
-			content: "";
-			flex: 1;
-			height: 1px;
-			background: #eee;
-		}
-	</style>
 </head>
 
 <body>
@@ -108,7 +91,7 @@
 			<div class="col-md-4 col-lg-3 text-center text-lg-start">
 				<div class="d-inline-flex align-items-center">
 					<a href="" class="navbar-brand p-0">
-						<h1 class="display-5 text-primary m-0"><i class="fas fa-shopping-bag text-secondary me-2"></i>Electro</h1>
+						<h1 class="display-5 text-primary m-0"><i class="fas fa-shopping-bag text-secondary me-2"></i>Badai Gym</h1>
 						<!-- <img src="img/logo.png" alt="Logo"> -->
 					</a>
 				</div>
@@ -159,12 +142,24 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarCollapse">
 						<div class="navbar-nav ms-auto py-0">
-							<a href="<?= base_url('Frontend/cHome') ?>" class="nav-item nav-link active">Home</a>
-							<a href="<?= base_url('Frontend/cKatalog') ?>" class="nav-item nav-link">Produk</a>
-							<a href="<?= base_url('Frontend/cPesanan') ?>" class="nav-item nav-link">Pesanan</a>
-							<a href="<?= base_url('Frontend/cMembership') ?>" class="nav-item nav-link">Membership</a>
-							<a href="<?= base_url('Frontend/cAkun') ?>" class="nav-item nav-link me-2">Akun</a>
-							<a href="<?= base_url('Frontend/cChatting') ?>" class="nav-item nav-link me-2">Pesan</a>
+							<a href="<?= base_url('Frontend/cHome') ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == 'Frontend' && $this->uri->segment(2) == 'cHome') {
+																										echo 'active';
+																									}  ?>">Home</a>
+							<a href="<?= base_url('Frontend/cKatalog') ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == 'Frontend' && $this->uri->segment(2) == 'cKatalog') {
+																										echo 'active';
+																									}  ?>">Produk</a>
+							<a href="<?= base_url('Frontend/cPesanan') ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == 'Frontend' && $this->uri->segment(2) == 'cPesanan') {
+																										echo 'active';
+																									}  ?>">Pesanan</a>
+							<a href="<?= base_url('Frontend/cMembership') ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == 'Frontend' && $this->uri->segment(2) == 'cMembership') {
+																											echo 'active';
+																										}  ?>">Membership</a>
+							<a href="<?= base_url('Frontend/cAkun') ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == 'Frontend' && $this->uri->segment(2) == 'cAkun') {
+																										echo 'active';
+																									}  ?> ">Akun</a>
+							<a href="<?= base_url('Frontend/cChatting') ?>" class="nav-item nav-link <?php if ($this->uri->segment(1) == 'Frontend' && $this->uri->segment(2) == 'cChatting') {
+																											echo 'active';
+																										}  ?>">Pesan</a>
 
 						</div>
 

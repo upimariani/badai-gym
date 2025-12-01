@@ -22,36 +22,44 @@
 					</div>
 				</div>
 				<div class="col-lg-12">
-
-					<form action="<?= base_url('Frontend/cAkun/perbaharui_akun') ?>" method="POST">
+					<?php
+					if ($this->session->userdata('success')) {
+					?>
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							<strong>Sukses!</strong> <?= $this->session->userdata('success') ?>
+						</div>
+					<?php
+					}
+					?>
+					<form action="<?= base_url('Frontend/cAkun/perbaharui_akun/' . $pelanggan->id_pelanggan) ?>" method="POST">
 						<div class="row g-4 wow fadeInUp" data-wow-delay="0.1s">
 							<div class="col-lg-12 col-xl-6">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="name" placeholder="Your Name">
+									<input type="text" class="form-control" name="nama" value="<?= $pelanggan->nama ?>" required>
 									<label for="name">Nama Pelanggan</label>
 								</div>
 							</div>
 							<div class="col-lg-12 col-xl-6">
 								<div class="form-floating">
-									<input type="email" class="form-control" id="email" placeholder="Your Email">
+									<input type="number" class="form-control" name="no_hp" value="<?= $pelanggan->no_hp ?>" required>
 									<label for="email">Nomor Telepon</label>
 								</div>
 							</div>
 							<div class="col-lg-12 col-xl-12">
 								<div class="form-floating">
-									<input type="phone" class="form-control" id="phone" placeholder="Phone">
+									<input type="text" class="form-control" name="alamat" value="<?= $pelanggan->alamat ?>" required>
 									<label for="phone">Alamat</label>
 								</div>
 							</div>
 							<div class="col-lg-12 col-xl-6">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="project" placeholder="Project">
+									<input type="text" class="form-control" name="username" value="<?= $pelanggan->username ?>" required>
 									<label for="project">Username</label>
 								</div>
 							</div>
 							<div class="col-lg-12 col-xl-6">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="subject" placeholder="Subject">
+									<input type="text" class="form-control" name="password" value="<?= $pelanggan->password ?>" required>
 									<label for="subject">Password</label>
 								</div>
 							</div>
