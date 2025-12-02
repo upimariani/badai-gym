@@ -10,15 +10,7 @@
 							<div class="page-header-title">
 								<i class="icofont icofont-table bg-c-blue"></i>
 								<div class="d-inline">
-									<h4>Transaksi Paket Membership</h4>
-									<?php
-									if ($this->session->userdata('id_user') == '2') {
-									?>
-										<a class="btn btn-success mt-1" href="<?= base_url('Backend/cLaporan/lap_paket') ?>">Cetak Laporan</a>
-									<?php
-									}
-									?>
-
+									<h4>Pelanggan</h4>
 								</div>
 							</div>
 						</div>
@@ -32,14 +24,12 @@
 									</li>
 									<li class="breadcrumb-item"><a href="#!">Dashboard</a>
 									</li>
-									<li class="breadcrumb-item"><a href="#!">Informasi Transaksi Paket</a>
+									<li class="breadcrumb-item"><a href="#!">Informasi Pelanggan</a>
 									</li>
 								</ul>
 							</div>
 						</div>
-
 					</div>
-
 				</div>
 				<!-- Page-header end -->
 				<?php
@@ -51,13 +41,12 @@
 				<?php
 				}
 				?>
-
 				<!-- Page-body start -->
 				<div class="page-body">
 					<!-- Basic table card start -->
 					<div class="card">
 						<div class="card-header">
-							<h5>Informasi Transaksi Paket Membership</h5>
+							<h5>Informasi Pelanggan</h5>
 							<div class="card-header-right">
 								<ul class="list-unstyled card-option">
 									<li><i class="icofont icofont-simple-left "></i></li>
@@ -70,50 +59,47 @@
 						</div>
 						<div class="card-block table-border-style m-3">
 							<div class="table-responsive">
-								<table class="tbl table">
+								<table class="table" id="myTable">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Atas Nama</th>
-											<th>Tanggal Transaksi</th>
-											<th>Total Bayar</th>
-											<th>Status Order</th>
-											<th>Action</th>
+											<th>Nama Pelanggan</th>
+											<th>Recency</th>
+											<th>Frequency</th>
+											<th>Monetary</th>
+											<th>Level Member</th>
+
 										</tr>
 									</thead>
 									<tbody>
 										<?php
 										$no = 1;
-										foreach ($transaksi as $key => $value) {
-
+										foreach ($pelanggan as $key => $value) {
 										?>
 											<tr>
 												<td><?= $no++ ?>.</td>
 												<td><?= $value->nama ?></td>
-												<td><?= $value->tgl_transaksi ?></td>
-												<td>Rp. <?= number_format($value->total_bayar)  ?></td>
-												<td><?php if ($value->stat_order == '0') {
+												<td><?= $value->recency ?></td>
+												<td><?= $value->frequency ?></td>
+												<td>Rp. <?= number_format($value->monetary)  ?></td>
+												<td><?php if ($value->level_member == '1') {
 													?>
-														<span class="badge bg-danger">Belum Bayar</span>
+														<span class="badge bg-warning">Classic</span>
 													<?php
-													} else if ($value->stat_order == '1') {
+													} else if ($value->level_member == '2') {
 													?>
-														<span class="badge bg-warning">Menunggu Konfirmasi</span>
+														<span class="badge bg-primary">Silver</span>
 													<?php
-													} else if ($value->stat_order == '4') {
+													} else {
 													?>
-														<span class="badge bg-success">Pesanan Selesai</span>
+														<span class="badge bg-success">Gold</span>
 													<?php
 													} ?>
-												</td>
-												<td>
-													<a href="<?= base_url('Backend/cTransaksiPaket/detail_pesanan/' . $value->id_transaksi) ?>" class="btn btn-success btn-sm">Detail Pesanan</a>
 												</td>
 											</tr>
 										<?php
 										}
 										?>
-
 									</tbody>
 								</table>
 							</div>

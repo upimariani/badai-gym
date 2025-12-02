@@ -76,6 +76,12 @@ class cAnalisis extends CI_Controller
 				);
 				$this->db->where('id_pelanggan', $row->id_pelanggan);
 				$this->db->update('analisis', $data);
+
+				$dt_pelanggan = array(
+					'level_member' => $i + 1
+				);
+				$this->db->where('id_pelanggan', $row->id_pelanggan);
+				$this->db->update('pelanggan', $dt_pelanggan);
 			}
 		}
 	}

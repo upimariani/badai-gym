@@ -11,6 +11,13 @@
 								<i class="icofont icofont-layout bg-c-blue"></i>
 								<div class="d-inline">
 									<h4>Transaksi Produk</h4>
+									<?php
+									if ($this->session->userdata('id_user') == '2') {
+									?>
+										<a class="btn btn-success mt-1" href="<?= base_url('Backend/cLaporan') ?>">Cetak Laporan</a>
+									<?php
+									}
+									?>
 								</div>
 							</div>
 						</div>

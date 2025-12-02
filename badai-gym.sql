@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2025 at 03:59 PM
+-- Generation Time: Dec 02, 2025 at 03:45 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -83,7 +83,8 @@ INSERT INTO `chat` (`id_chat`, `id_pelanggan`, `id_user`, `pelanggan_send`, `adm
 (2, 2, 1, 'apakah produk A ready?', '0', '2025-12-01', 0),
 (3, 2, 1, 'Ditunggu jawabannya', '0', '2025-12-01', 0),
 (4, 2, 1, 'Ditunggu jawabannya', '0', '2025-12-01', 0),
-(5, 2, 1, 'haloo', '0', '2025-12-01', 0);
+(5, 2, 1, 'haloo', '0', '2025-12-01', 0),
+(6, 2, 1, '0', 'ready kak', '2025-12-02', 0);
 
 -- --------------------------------------------------------
 
@@ -178,8 +179,21 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `alamat`, `no_hp`, `username`, `password`, `level_member`) VALUES
-(1, 'Pelanggan A', 'Kuningan', '089984567654', 'pelanggan', 'pelanggan', 1),
-(2, 'Selviya', 'Kuningan, Jawa Barat', '089984565432', 'viya', 'viya', 1);
+(1, 'Pelanggan A', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_a', 'pelanggan_a', 1),
+(2, 'Pelanggan B', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_b', 'pelanggan_b', 2),
+(3, 'Pelanggan C', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_c', 'pelanggan_c', 3),
+(4, 'Pelanggan D', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_d', 'pelanggan_d', 3),
+(5, 'Pelanggan E', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_e', 'pelanggan_e', 2),
+(6, 'Pelanggan F', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_f', 'pelanggan_f', 2),
+(7, 'Pelanggan G', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_g', 'pelanggan_g', 1),
+(8, 'Pelanggan H', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_h', 'pelanggan_h', 2),
+(9, 'Pelanggan I', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_i', 'pelanggan_i', 2),
+(10, 'Pelanggan J', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_j', 'pelanggan_j', 1),
+(11, 'Pelanggan K', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_k', 'pelanggan_k', 1),
+(12, 'Pelanggan L', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_l', 'pelanggan_l', 2),
+(13, 'Pelanggan M', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_m', 'pelanggan_m', 1),
+(14, 'Pelanggan N', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_n', 'pelanggan_n', 3),
+(15, 'Pelanggan O', 'Kuningan, Jawa Barat', '089987656765', 'pelanggan_o', 'pelanggan_o', 2);
 
 -- --------------------------------------------------------
 
@@ -325,7 +339,7 @@ ALTER TABLE `analisis`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `detail_paket`
@@ -355,7 +369,7 @@ ALTER TABLE `paket`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `produk`

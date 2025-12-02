@@ -86,7 +86,7 @@
 							<i class="ti-search"></i>
 						</a>
 						<a href="index.html">
-							<img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+							<!-- <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" /> -->
 						</a>
 						<a class="mobile-options">
 							<i class="ti-more"></i>
@@ -106,48 +106,45 @@
 							</li>
 						</ul>
 						<ul class="nav-right">
-							<li class="header-notification">
-								<a href="#!">
-									<i class="ti-bell"></i>
-									<span class="badge bg-c-pink"></span>
-								</a>
-								<ul class="show-notification">
-									<li>
-										<h6>Notifications</h6>
-										<label class="label label-danger">New</label>
-									</li>
-									<li>
-										<div class="media">
-											<img class="d-flex align-self-center img-radius" src="assets/images/avatar-4.jpg" alt="Generic placeholder image">
-											<div class="media-body">
-												<h5 class="notification-user">John Doe</h5>
-												<p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-												<span class="notification-time">30 minutes ago</span>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="media">
-											<img class="d-flex align-self-center img-radius" src="assets/images/avatar-3.jpg" alt="Generic placeholder image">
-											<div class="media-body">
-												<h5 class="notification-user">Joseph William</h5>
-												<p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-												<span class="notification-time">30 minutes ago</span>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="media">
-											<img class="d-flex align-self-center img-radius" src="assets/images/avatar-4.jpg" alt="Generic placeholder image">
-											<div class="media-body">
-												<h5 class="notification-user">Sara Soudein</h5>
-												<p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-												<span class="notification-time">30 minutes ago</span>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</li>
+							<?php
+							if ($this->session->userdata('id_user') == '1') {
+							?>
+								<li class="header-notification">
+									<a href="#!">
+										<i class="ti-comment"></i>
+										<span class="badge bg-c-pink"></span>
+									</a>
+									<ul class="show-notification">
+										<li>
+											<h6>Pesan</h6>
+											<label class="label label-danger">New</label>
+										</li>
+										<?php
+										$pesan = $this->db->query("SELECT * FROM `chat` JOIN pelanggan ON chat.id_pelanggan=pelanggan.id_pelanggan GROUP BY pelanggan.id_pelanggan")->result();
+										foreach ($pesan as $key => $value) {
+
+										?>
+											<li>
+												<a href="<?= base_url('Backend/cDashboard/view_pesan/' . $value->id_pelanggan) ?>">
+													<div class="media">
+														<div class="media-body">
+															<h5 class="notification-user"><?= $value->nama ?></h5>
+															<p class="notification-msg"><?= $value->no_hp ?></p>
+															<span class="notification-time"><?= $value->tgl_chat ?></span>
+														</div>
+													</div>
+												</a>
+											</li>
+										<?php
+										}
+										?>
+
+									</ul>
+								</li>
+							<?php
+							}
+							?>
+
 						</ul>
 					</div>
 				</div>

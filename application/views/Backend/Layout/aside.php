@@ -40,53 +40,60 @@
 							<span class="pcoded-mcaret"></span>
 						</a>
 					</li>
-					<div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Data Master</div>
-					<li class="pcoded-hasmenu">
-						<a href="javascript:void(0)">
-							<span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-							<span class="pcoded-mtext" data-i18n="nav.basic-components.main">Data</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-						<ul class="pcoded-submenu">
-							<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cUser') {
-											echo 'active';
-										}  ?>">
-								<a href="<?= base_url('Backend/cUser') ?>">
-									<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-									<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User</span>
-									<span class="pcoded-mcaret"></span>
-								</a>
-							</li>
-							<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cPaket') {
-											echo 'active';
-										}  ?>">
-								<a href="<?= base_url('Backend/cPaket') ?>">
-									<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-									<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Paket</span>
-									<span class="pcoded-mcaret"></span>
-								</a>
-							</li>
-							<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cProduk') {
-											echo 'active';
-										}  ?>">
-								<a href="<?= base_url('Backend/cProduk') ?>">
-									<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-									<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Produk</span>
-									<span class="pcoded-mcaret"></span>
-								</a>
-							</li>
-							<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cDiskon') {
-											echo 'active';
-										}  ?>">
-								<a href="<?= base_url('Backend/cDiskon') ?>">
-									<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-									<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Diskon</span>
-									<span class="pcoded-mcaret"></span>
-								</a>
-							</li>
+					<?php
+					if ($user->level_user == '1') {
+					?>
+						<div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Data Master</div>
+						<li class="pcoded-hasmenu">
+							<a href="javascript:void(0)">
+								<span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+								<span class="pcoded-mtext" data-i18n="nav.basic-components.main">Data</span>
+								<span class="pcoded-mcaret"></span>
+							</a>
+							<ul class="pcoded-submenu">
+								<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cUser') {
+												echo 'active';
+											}  ?>">
+									<a href="<?= base_url('Backend/cUser') ?>">
+										<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+										<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User</span>
+										<span class="pcoded-mcaret"></span>
+									</a>
+								</li>
+								<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cPaket') {
+												echo 'active';
+											}  ?>">
+									<a href="<?= base_url('Backend/cPaket') ?>">
+										<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+										<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Paket</span>
+										<span class="pcoded-mcaret"></span>
+									</a>
+								</li>
+								<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cProduk') {
+												echo 'active';
+											}  ?>">
+									<a href="<?= base_url('Backend/cProduk') ?>">
+										<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+										<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Produk</span>
+										<span class="pcoded-mcaret"></span>
+									</a>
+								</li>
+								<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cDiskon') {
+												echo 'active';
+											}  ?>">
+									<a href="<?= base_url('Backend/cDiskon') ?>">
+										<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+										<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Diskon</span>
+										<span class="pcoded-mcaret"></span>
+									</a>
+								</li>
 
-						</ul>
-					</li>
+							</ul>
+						</li>
+					<?php
+					}
+					?>
+
 				</ul>
 				<div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Transaksi</div>
 				<ul class="pcoded-item pcoded-left-item">
@@ -111,20 +118,26 @@
 
 				</ul>
 
-				<div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Analisis K-Means</div>
-				<ul class="pcoded-item pcoded-left-item">
-					<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cAnalisisPelanggan') {
-									echo 'active';
-								}  ?>">
-						<a href="<?= base_url('Backend/cAnalisisPelanggan') ?>">
-							<span class="pcoded-micon"><i class="ti-direction-alt"></i><b>FC</b></span>
-							<span class="pcoded-mtext" data-i18n="nav.form-components.main">Analisis Pelanggan</span>
-							<span class="pcoded-mcaret"></span>
-						</a>
-					</li>
+				<?php
+				if ($user->level_user == '1') {
+				?>
+					<div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Analisis K-Means</div>
+					<ul class="pcoded-item pcoded-left-item">
+						<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cAnalisisPelanggan') {
+										echo 'active';
+									}  ?>">
+							<a href="<?= base_url('Backend/cAnalisisPelanggan') ?>">
+								<span class="pcoded-micon"><i class="ti-direction-alt"></i><b>FC</b></span>
+								<span class="pcoded-mtext" data-i18n="nav.form-components.main">Analisis Pelanggan</span>
+								<span class="pcoded-mcaret"></span>
+							</a>
+						</li>
 
 
-				</ul>
+					</ul>
+				<?php
+				}
+				?>
 
 
 			</div>
