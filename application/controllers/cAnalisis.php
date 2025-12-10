@@ -84,6 +84,32 @@ class cAnalisis extends CI_Controller
 				$this->db->update('pelanggan', $dt_pelanggan);
 			}
 		}
+		$this->session->set_flashdata('success', 'Pesanan berhasil dipesan!');
+		redirect('Frontend/cPesanan');
+	}
+	public function variabel($id_transaksi)
+	{
+		$dt_pelanggan = $this->db->query("SELECT * FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE transaksi.id_transaksi='" . $id_transaksi . "'")->row();
+
+		//menentukan variabel
+		$data = $this->db->query("SELECT COUNT(id_transaksi) as frequency, SUM(total_bayar) as monetary FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE pelanggan.id_pelanggan='" . $dt_pelanggan->id_pelanggan . "'")->row();
+
+		$dt_cek = $this->db->query("SELECT * FROM `analisis` WHERE id_pelanggan='" . $dt_pelanggan->id_pelanggan . "'")->row();
+
+		$dt_analisis = array(
+			'id_pelanggan' => $dt_pelanggan->id_pelanggan,
+			'recency' => '1',
+			'frequency' => $data->frequency,
+			'monetary' => $data->monetary
+		);
+		if ($dt_cek) {
+			$this->db->where('id_pelanggan', $dt_pelanggan->id_pelanggan);
+			$this->db->update('analisis', $dt_analisis);
+		} else {
+			$this->db->insert('analisis', $dt_analisis);
+		}
+
+		redirect('cAnalisis');
 	}
 }
 

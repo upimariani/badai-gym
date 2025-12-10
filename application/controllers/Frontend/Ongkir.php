@@ -7,7 +7,8 @@ class Ongkir extends CI_Controller
 
 
 	// private $api_key = '3f018925eeb63642fc6a25c862a54db5';
-	private $api_key = '7jLX9MbP213ff18674eab1e29WSBIimb';
+	// private $api_key = '7jLX9MbP213ff18674eab1e29WSBIimb';
+	private $api_key = '6bad9044fb6fdb33caac381cb5b5bc5c';
 	public function provinsi()
 	{
 

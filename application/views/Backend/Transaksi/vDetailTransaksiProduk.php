@@ -81,6 +81,14 @@
 																		<?= $detail->no_hp ?><br>
 																		<?= $detail->alamat_pengiriman ?>
 																	</address>
+																	<?php
+																	if ($detail->stat_order != '0') {
+																	?>
+																		<a class="text-success" href="<?= base_url('asset/bayar/' . $detail->pembayaran) ?>">View Bukti Pembayaran</a>
+																	<?php
+																	}
+																	?>
+
 																</div>
 															</div>
 

@@ -45,25 +45,32 @@
 						}
 						?>
 						<form method="POST" class="register-form" action="<?= base_url('Frontend/cLogin/regist') ?>" id="register-form">
+							<?= form_error('nama', '<small class="text-danger">', '</small>') ?>
 							<div class="form-group">
 								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-								<input type="text" name="nama" id="name" placeholder="Nama Pelanggan" required />
+								<input type="text" name="nama" id="name" placeholder="Nama Pelanggan" />
 							</div>
+							<?= form_error('no_hp', '<small class="text-danger">', '</small>') ?>
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-assignment"></i></label>
-								<input type="number" name="no_hp" id="pass" placeholder="Nomor Telepon" required />
+								<input type="number" name="no_hp" placeholder="Nomor Telepon" />
 							</div>
+							<?= form_error('alamat', '<small class="text-danger">', '</small>') ?>
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-map"></i></label>
-								<input type="text" name="alamat" id="pass" placeholder="Alamat" required />
+								<input type="text" name="alamat" id="pass" placeholder="Alamat" />
 							</div>
+
+							<?= form_error('username', '<small class="text-danger">', '</small>') ?>
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-assignment-account"></i></label>
-								<input type="text" name="username" id="pass" placeholder="Username" required />
+								<input type="text" name="username" id="pass" placeholder="Username" />
 							</div>
+
+							<?= form_error('password', '<small class="text-danger">', '</small>') ?>
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-lock"></i></label>
-								<input type="text" name="password" id="pass" placeholder="Password" required />
+								<input type="text" name="password" id="pass" placeholder="Password" />
 							</div>
 							<div class="form-group form-button">
 								<input type="submit" class="btn btn-warning" value="Registrasi" />

@@ -91,16 +91,24 @@
 										<input type="hidden" name="result_type" id="result-type" value="">
 										<input type="hidden" name="result_data" id="result-data" value="">
 									</form>
-									<button class="btn btn-danger mb-3" id="pay-button">Bayar!</button>
+									<button class="btn btn-warning" id="pay-button">Bayar!</button>
+									<a class="btn btn-danger" href="<?= base_url('Frontend/cPesanan/batalkan_pesanan/' . $detail->id_transaksi) ?>">Batalkan Pesanan</a>
 
+								<?php
+								} else if ($detail->pembayaran == 'Midtrans') {
+									echo form_open_multipart('Frontend/cPesanan/bayar/' . $detail->id_transaksi)
+								?>
+									<h6>Upload Pembayaran</h6>
+									<input type="file" name="gambar" class="form-control mb-3">
+									<button type="submit" class="btn btn-primary">Upload</button>
 								<?php
 								} else if ($detail->stat_order == '3') {
 								?>
-									<a href="<?= base_url('Frontend/cPesanan/pesanan_diterima/' . $value->id_transaksi) ?>" class="btn btn-warning mb-3">Pesanan Diterima</a>
+									<a href="<?= base_url('Frontend/cPesanan/pesanan_diterima/' . $detail->id_transaksi) ?>" class="btn btn-warning mb-3">Pesanan Diterima</a>
 								<?php
 								}
 								?>
-								<a href="<?= base_url('Frontend/cPesanan') ?>" class="btn btn-danger mb-3">Kembali</a>
+								<a href="<?= base_url('Frontend/cPesanan') ?>" class="btn btn-danger">Kembali</a>
 							</div>
 						</div>
 					</div>

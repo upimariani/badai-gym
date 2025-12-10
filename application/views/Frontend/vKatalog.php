@@ -47,22 +47,26 @@
 										<div class="product-item-inner border rounded">
 											<div class="product-item-inner-item">
 												<img src="<?= base_url('asset/produk/' . $value->gambar) ?>" class="img-fluid w-100 rounded-top" alt="">
-
-
 											</div>
 											<div class="text-center rounded-bottom p-4">
-												<small class="d-block mb-2"><?= $value->deskripsi ?></small>
-												<a href="#" class="d-block h4"><?= $value->nama_produk ?> </a>
+												<small class="d-block mb-2">Stok: <?= $value->stok ?></small>
+												<a href="<?= base_url('Frontend/cKatalog/detail_produk/' . $value->id_produk) ?>" class="d-block h4"><?= $value->nama_produk ?> </a>
 
 												<span class="text-primary fs-5">Rp. <?= number_format($value->harga) ?></span>
 											</div>
 										</div>
-										<div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-											<a href="<?= base_url('Frontend/cCart/add_cart/' . $value->id_produk) ?>" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i class="fas fa-shopping-cart me-2"></i> Add To Cart</a>
-											<div class="d-flex justify-content-between align-items-center">
-
+										<?php
+										if ($value->stok != '0') {
+										?>
+											<div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
+												<a href="<?= base_url('Frontend/cCart/add_cart/' . $value->id_produk) ?>" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i class="fas fa-shopping-cart me-2"></i> Add To Cart</a>
+												<div class="d-flex justify-content-between align-items-center">
+												</div>
 											</div>
-										</div>
+										<?php
+										}
+										?>
+
 									</div>
 								</div>
 							<?php

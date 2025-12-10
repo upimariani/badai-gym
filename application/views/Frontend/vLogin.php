@@ -16,15 +16,13 @@
 </head>
 
 <body>
-
 	<div class="main">
-
 		<!-- Sign up form -->
 		<section class="signup">
 			<div class="container">
 				<div class="signup-content">
 					<div class="signup-form">
-						<h2 class="form-title">Login Pelanggan</h2>
+						<h2 class="form-title">Login</h2>
 
 						<?php
 						if ($this->session->userdata('error')) {

@@ -19,6 +19,15 @@ class cKatalog extends CI_Controller
 		$this->load->view('Frontend/vKatalog', $data);
 		$this->load->view('Frontend/Layout/footer');
 	}
+	public function detail_produk($id_produk)
+	{
+		$data = array(
+			'produk' => $this->db->query("SELECT * FROM `produk` WHERE id_produk='" . $id_produk . "'")->row()
+		);
+		$this->load->view('Frontend/Layout/head');
+		$this->load->view('Frontend/vDetailProduk', $data);
+		$this->load->view('Frontend/Layout/footer');
+	}
 }
 
 /* End of file cKatalog.php */

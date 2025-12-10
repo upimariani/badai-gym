@@ -11,14 +11,6 @@
 								<i class="icofont icofont-table bg-c-blue"></i>
 								<div class="d-inline">
 									<h4>Transaksi Paket Membership</h4>
-									<?php
-									if ($this->session->userdata('id_user') == '2') {
-									?>
-										<a class="btn btn-success mt-1" href="<?= base_url('Backend/cLaporan/lap_paket') ?>">Cetak Laporan</a>
-									<?php
-									}
-									?>
-
 								</div>
 							</div>
 						</div>
@@ -41,6 +33,48 @@
 					</div>
 
 				</div>
+				<?php
+				if ($this->session->userdata('id_user') == '2') {
+				?>
+					<div class="card">
+						<div class="card-body">
+							<h6>Laporan Transaksi Paket Membership</h6>
+							<hr>
+							<form action="<?= base_url('Backend/cLaporan/lap_paket') ?>" method="POST">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Bulan:</label>
+											<select class="form-control" name="bulan">
+												<option value="">Pilih Bulan</option>
+												<?php
+												for ($i = 1; $i <= 12; $i++) {
+												?>
+													<option value="<?= $i ?>">Bulan Ke- <?= $i ?></option>
+												<?php
+												}
+												?>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Tahun:</label>
+											<select class="form-control" name="tahun">
+												<option value="">Pilih Tahun</option>
+												<option value="2025">2025</option>
+											</select>
+										</div>
+										<div class="form-group"><button type="submit" class="btn btn-success">Cetak Laporan</button></div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				<?php
+				}
+				?>
 				<!-- Page-header end -->
 				<?php
 				if ($this->session->userdata('success')) {

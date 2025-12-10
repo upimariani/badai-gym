@@ -21,6 +21,15 @@
 		<?php
 		}
 		?>
+		<?php
+		if ($this->session->userdata('error')) {
+		?>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>Gagal!</strong> <?= $this->session->userdata('error') ?>
+			</div>
+		<?php
+		}
+		?>
 		<div class="table-responsive">
 			<form action="<?= base_url('Frontend/cCart/update_cart') ?>" method="POST">
 				<table class="table">
@@ -40,7 +49,7 @@
 						?>
 							<tr>
 								<th scope="row">
-									<p class="mb-0 py-4"><?= $value['name'] ?></p>
+									<p class="mb-0 py-4"><?= $value['name'] ?> <small>Stok. <?= $value['stok'] ?></small></p>
 								</th>
 								<td>
 									<p class="mb-0 py-4">Rp. <?= number_format($value['price']) ?></p>

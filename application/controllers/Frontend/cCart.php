@@ -34,11 +34,16 @@ class cCart extends CI_Controller
 	{
 		$i = 1;
 		foreach ($this->cart->contents() as $items) {
-			$data = array(
-				'rowid'  => $items['rowid'],
-				'qty'    => $this->input->post('qty' . $i)
-			);
-			$this->cart->update($data);
+			if ($this->input->post('qty' . $i) > $items['stok']) {
+				$this->session->set_flashdata('error', 'Stok Produk ' . $items['name'] . ' melebihi stok yang tersedia!');
+				redirect('Frontend/cCart');
+			} else {
+				$data = array(
+					'rowid'  => $items['rowid'],
+					'qty'    => $this->input->post('qty' . $i)
+				);
+				$this->cart->update($data);
+			}
 			$i++;
 		}
 		$this->session->set_flashdata('success', 'Produk Berhasil Diperbaharui!');

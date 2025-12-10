@@ -18,18 +18,15 @@
 													} ?><i class="ti-angle-down"></i></span>
 						</div>
 					</div>
-
 					<div class="main-menu-content">
 						<ul>
 							<li class="more-details">
 
-								<a href="<?= base_url('Backend/cLogin/logout') ?>"><i class="ti-layout-sidebar-left"></i>Logout</a>
+								<a href="<?= base_url('Frontend/cLogin/logout') ?>"><i class="ti-layout-sidebar-left"></i>Logout</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-
-
 				<ul class="pcoded-item pcoded-left-item">
 					<li class="<?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cDashboard') {
 									echo 'active';

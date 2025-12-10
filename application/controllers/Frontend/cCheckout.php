@@ -35,10 +35,24 @@ class cCheckout extends CI_Controller
 				'qty' => $value['qty']
 			);
 			$this->db->insert('detail_transaksi', $dt);
+
+			//mengurangi stok produk
+			$dt_produk = $this->db->query("SELECT * FROM `produk` WHERE id_produk='" . $value['id'] . "'")->row();
+			$stok_seb = $dt_produk->stok;
+			$stok_set = $stok_seb - $value['qty'];
+
+			$dt_stok = array(
+				'stok' => $stok_set
+			);
+			$this->db->where('id_produk', $value['id']);
+			$this->db->update('produk', $dt_stok);
 		}
 		$this->cart->destroy();
-		$this->session->set_flashdata('success', 'Pesanan berhasil dipesan!');
-		redirect('Frontend/cPesanan');
+
+		redirect('cAnalisis/variabel/' . $query->id);
+
+		// $this->session->set_flashdata('success', 'Pesanan berhasil dipesan!');
+		// redirect('Frontend/cPesanan');
 	}
 }
 
