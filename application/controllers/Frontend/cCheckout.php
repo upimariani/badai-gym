@@ -49,7 +49,7 @@ class cCheckout extends CI_Controller
 		}
 		$this->cart->destroy();
 
-		redirect('cAnalisis/variabel/' . $query->id);
+		redirect('cAnalisis/variabel');
 
 		// $this->session->set_flashdata('success', 'Pesanan berhasil dipesan!');
 		// redirect('Frontend/cPesanan');

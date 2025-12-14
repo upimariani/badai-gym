@@ -87,29 +87,56 @@ class cAnalisis extends CI_Controller
 		$this->session->set_flashdata('success', 'Pesanan berhasil dipesan!');
 		redirect('Frontend/cPesanan');
 	}
-	public function variabel($id_transaksi)
+	public function variabel()
 	{
-		$dt_pelanggan = $this->db->query("SELECT * FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE transaksi.id_transaksi='" . $id_transaksi . "'")->row();
+		$this->db->truncate('analisis');
+		$dt_pelanggan = $this->db->query("SELECT * FROM `pelanggan`")->result();
+		foreach ($dt_pelanggan as $key => $value) {
+			//menentukan variabel
+			$dt = $this->db->query("SELECT COUNT(id_transaksi) as frequency, SUM(total_bayar) as monetary FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE pelanggan.id_pelanggan='" . $value->id_pelanggan . "'")->row();
 
-		//menentukan variabel
-		$data = $this->db->query("SELECT COUNT(id_transaksi) as frequency, SUM(total_bayar) as monetary FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE pelanggan.id_pelanggan='" . $dt_pelanggan->id_pelanggan . "'")->row();
 
-		$dt_cek = $this->db->query("SELECT * FROM `analisis` WHERE id_pelanggan='" . $dt_pelanggan->id_pelanggan . "'")->row();
+			$date = date('Y-m-d');
+			$dt_recency = $this->db->query("SELECT DATEDIFF('" . $date . "', tgl_transaksi) AS selisih_hari FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE pelanggan.id_pelanggan='" . $value->id_pelanggan . "' GROUP BY tgl_transaksi DESC LIMIT 1")->row();
 
-		$dt_analisis = array(
-			'id_pelanggan' => $dt_pelanggan->id_pelanggan,
-			'recency' => '1',
-			'frequency' => $data->frequency,
-			'monetary' => $data->monetary
-		);
-		if ($dt_cek) {
-			$this->db->where('id_pelanggan', $dt_pelanggan->id_pelanggan);
-			$this->db->update('analisis', $dt_analisis);
-		} else {
-			$this->db->insert('analisis', $dt_analisis);
+			$data = array(
+				'id_pelanggan' => $value->id_pelanggan,
+				'recency' => $dt_recency->selisih_hari,
+				'frequency' => $dt->frequency,
+				'monetary' => $dt->monetary
+			);
+			$this->db->insert('analisis', $data);
 		}
-
 		redirect('cAnalisis');
+	}
+
+
+	public function triger_tot_transaksi()
+	{
+		$tot = 0;
+		$dt_transaksi = $this->db->query("SELECT * FROM transaksi JOIN `detail_transaksi` ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN produk ON detail_transaksi.id_produk=produk.id_produk")->result();
+		foreach ($dt_transaksi as $key => $value) {
+
+
+			$tot = $value->harga * $value->qty;
+
+			$data = array(
+				'total_bayar' => $tot + 7000
+			);
+			$this->db->where('id_transaksi', $value->id_transaksi);
+			$this->db->update('transaksi', $data);
+		}
+	}
+	public function triger_alamat()
+	{
+		$dt_pelanggan = $this->db->query("SELECT * FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan")->result();
+		foreach ($dt_pelanggan as $key => $value) {
+			$data = array(
+				'alamat_pengiriman' => $value->alamat
+			);
+			$this->db->where('id_pelanggan', $value->id_pelanggan);
+			$this->db->update('transaksi', $data);
+		}
 	}
 }
 

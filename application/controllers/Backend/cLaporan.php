@@ -99,10 +99,10 @@ class cLaporan extends CI_Controller
 
 		$pdf->Cell(10, 10, '', 0, 1);
 		$pdf->SetFont('Times', 'B', 9);
-		$pdf->Cell(20, 7, 'No.', 1, 0, 'C');
-		$pdf->Cell(40, 7, 'Nama Produk', 1, 0, 'C');
+		$pdf->Cell(10, 7, 'No.', 1, 0, 'C');
+		$pdf->Cell(70, 7, 'Nama Produk', 1, 0, 'C');
 		$pdf->Cell(40, 7, 'Harga', 1, 0, 'C');
-		$pdf->Cell(40, 7, 'Quantitty', 1, 0, 'C');
+		$pdf->Cell(20, 7, 'Quantitty', 1, 0, 'C');
 		$pdf->Cell(40, 7, 'Subtotal', 1, 1, 'C');
 
 		$pdf->SetFont('Times', '', 9);
@@ -113,10 +113,10 @@ class cLaporan extends CI_Controller
 
 		$no = 1;
 		foreach ($data as $key => $value) {
-			$pdf->Cell(20, 7, $no++, 1, 0, 'R');
-			$pdf->Cell(40, 7, $value->nama_produk, 1, 0);
+			$pdf->Cell(10, 7, $no++, 1, 0, 'R');
+			$pdf->Cell(70, 7, $value->nama_produk, 1, 0);
 			$pdf->Cell(40, 7, 'Rp. ' . number_format($value->harga), 1, 0, 'C');
-			$pdf->Cell(40, 7, $value->qty . 'x', 1, 0, 'C');
+			$pdf->Cell(20, 7, $value->qty . 'x', 1, 0, 'C');
 			$pdf->Cell(40, 7, 'Rp. ' . number_format($value->harga * $value->qty), 1, 1, 'C');
 		}
 

@@ -7,7 +7,7 @@ class cPesanan extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'pesanan' => $this->db->query("SELECT * FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE pelanggan.id_pelanggan='" . $this->session->userdata('id_pelanggan') . "' AND jenis_trans='1'")->result()
+			'pesanan' => $this->db->query("SELECT * FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE pelanggan.id_pelanggan='" . $this->session->userdata('id_pelanggan') . "' AND jenis_trans='1' GROUP BY tgl_transaksi DESC")->result()
 		);
 		$this->load->view('Frontend/Layout/head');
 		$this->load->view('Frontend/vPesanan', $data);

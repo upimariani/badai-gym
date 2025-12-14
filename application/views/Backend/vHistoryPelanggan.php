@@ -10,8 +10,7 @@
 							<div class="page-header-title">
 								<i class="icofont icofont-table bg-c-blue"></i>
 								<div class="d-inline">
-									<h4>Produk</h4>
-									<a class="btn btn-primary mt-1" href="<?= base_url('Backend/cProduk/add') ?>">Tambah Data Produk</a>
+									<h4>Pelanggan</h4>
 								</div>
 							</div>
 						</div>
@@ -25,7 +24,7 @@
 									</li>
 									<li class="breadcrumb-item"><a href="#!">Dashboard</a>
 									</li>
-									<li class="breadcrumb-item"><a href="#!">Informasi Produk</a>
+									<li class="breadcrumb-item"><a href="#!">Informasi Pelanggan</a>
 									</li>
 								</ul>
 							</div>
@@ -47,7 +46,23 @@
 					<!-- Basic table card start -->
 					<div class="card">
 						<div class="card-header">
-							<h5>Informasi Produk</h5>
+							<h4>Informasi History Transaksi Pelanggan</h4>
+							<hr>
+							<table class="table">
+								<tr>
+									<th>Nama</th>
+									<td><?= $pelanggan->nama ?></td>
+								</tr>
+								<tr>
+									<th>Alamat</th>
+									<td><?= $pelanggan->alamat ?></td>
+								</tr>
+								<tr>
+									<th>Nomor Telepon</th>
+									<td><?= $pelanggan->no_hp ?></td>
+								</tr>
+							</table>
+							<hr>
 							<div class="card-header-right">
 								<ul class="list-unstyled card-option">
 									<li><i class="icofont icofont-simple-left "></i></li>
@@ -64,38 +79,31 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Nama Produk</th>
-											<th>Deskripsi</th>
-											<th>Harga</th>
-											<th>Stok</th>
-											<th>Action</th>
+											<th>Tanggal Transaksi</th>
+											<th>Produk</th>
+											<th>Total Pembayaran</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
 										$no = 1;
-										foreach ($produk as $key => $value) {
+										foreach ($transaksi as $key => $value) {
+											$dt_produk = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_detail_transaksi JOIN produk ON detail_transaksi.id_produk=produk.id_produk WHERE transaksi.id_transaksi='" . $value->id_transaksi . "'")->result();
 										?>
 											<tr>
 												<td><?= $no++ ?>.</td>
-												<td><img style="width: 50px;" src="<?= base_url('asset/produk/' . $value->gambar) ?>"> <strong><?= $value->nama_produk ?></strong></td>
-												<td style="white-space: normal; word-wrap: break-word;"><?= $value->deskripsi ?></td>
-												<td>Rp. <?= number_format($value->harga)  ?></td>
-												<td><?= $value->stok ?> pcs</td>
-												<td>
-													<div class="dropdown-success dropdown open">
-														<button class="btn btn-success dropdown-toggle waves-effect waves-light btn-sm" type="button" id="dropdown-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Action</button>
-														<div class="dropdown-menu" aria-labelledby="dropdown-3" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-															<a class="dropdown-item waves-light waves-effect" href="<?= base_url('Backend/cProduk/update/' . $value->id_produk) ?>">Perbaharui</a>
-															<a class="dropdown-item waves-light waves-effect" href="<?= base_url('Backend/cProduk/delete/' . $value->id_produk) ?>">Hapus</a>
-														</div>
-													</div>
-												</td>
+												<td><?= $value->tgl_transaksi ?></td>
+												<td><?php
+													foreach ($dt_produk as $key => $items) {
+														echo $items->nama_produk;
+													}
+													?></td>
+												<td>Rp. <?= number_format($value->total_bayar)  ?></td>
+
 											</tr>
 										<?php
 										}
 										?>
-
 									</tbody>
 								</table>
 							</div>

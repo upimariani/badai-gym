@@ -68,7 +68,7 @@
 											<th>Frequency</th>
 											<th>Monetary</th>
 											<th>Level Member</th>
-
+											<th>History Transaksi</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -95,6 +95,9 @@
 														<span class="badge bg-success">Gold</span>
 													<?php
 													} ?>
+												</td>
+												<td class="text-center">
+													<a href="<?= base_url('Backend/cAnalisisPelanggan/history_pelanggan/' . $value->id_pelanggan) ?>" class="btn btn-success btn-sm">...</a>
 												</td>
 											</tr>
 										<?php
