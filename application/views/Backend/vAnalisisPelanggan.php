@@ -41,6 +41,30 @@
 				<?php
 				}
 				?>
+				<div class="page-body">
+					<!-- Basic table card start -->
+					<div class="card">
+						<div class="card-header">
+							<h5>Grafik Informasi Level Member Pelanggan</h5>
+							<div class="card-header-right">
+								<ul class="list-unstyled card-option">
+									<li><i class="icofont icofont-simple-left "></i></li>
+									<li><i class="icofont icofont-maximize full-card"></i></li>
+									<li><i class="icofont icofont-minus minimize-card"></i></li>
+									<li><i class="icofont icofont-refresh reload-card"></i></li>
+									<li><i class="icofont icofont-error close-card"></i></li>
+								</ul>
+							</div>
+						</div>
+						<div class="card-block table-border-style m-3">
+							<canvas id="level_member"></canvas>
+						</div>
+					</div>
+					<!-- Basic table card end -->
+					<!-- Inverse table card start -->
+
+					<!-- Background Utilities table end -->
+				</div>
 				<!-- Page-body start -->
 				<div class="page-body">
 					<!-- Basic table card start -->

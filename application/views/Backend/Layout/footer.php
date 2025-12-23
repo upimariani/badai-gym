@@ -18,6 +18,7 @@
 <script src="<?= base_url('asset/guruable-master/') ?>assets/js/pcoded.min.js"></script>
 <script src="<?= base_url('asset/guruable-master/') ?>assets/js/demo-12.js"></script>
 <script src="<?= base_url('asset/guruable-master/') ?>assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="<?= base_url('asset/chart/js_chart.js') ?>"></script>
 <script>
 	var $window = $(window);
 	var nav = $('.fixed-button');
@@ -40,6 +41,59 @@
 	});
 	$('.tbl').DataTable({
 		select: true
+	});
+</script>
+<script>
+	<?php
+	$pelanggan = $this->db->query("SELECT COUNT(id_pelanggan) as jml, level_member FROM `pelanggan` GROUP BY level_member")->result();
+	foreach ($pelanggan as $key => $value) {
+		if ($value->level_member == '1') {
+			$lev = 'Classic';
+		} else if ($value->level_member == '2') {
+			$lev = 'Silver';
+		} else if ($value->level_member == '3') {
+			$lev = 'Gold';
+		}
+		$dt_pelanggan[] = $value->jml;
+		$member[] = $lev;
+	}
+
+
+	?>
+	var ctx = document.getElementById('level_member');
+	var grafik = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: <?= json_encode($member) ?>,
+			datasets: [{
+				label: 'Level Member Pelanggan',
+				data: <?= json_encode($dt_pelanggan) ?>,
+				backgroundColor: [
+					'rgba(255, 206, 86, 0.80)',
+					'rgba(75, 192, 192, 0.80)',
+					'rgba(153, 102, 255, 0.80)',
+					'rgba(255, 159, 64, 0.80)',
+				],
+				borderColor: [
+					'rgba(255, 206, 86, 0.80)',
+					'rgba(75, 192, 192, 0.80)',
+					'rgba(153, 102, 255, 0.80)',
+					'rgba(255, 159, 64, 0.80)',
+				],
+				color: '#666',
+				fill: false,
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}
 	});
 </script>
 </body>

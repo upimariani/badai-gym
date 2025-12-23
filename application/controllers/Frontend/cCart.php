@@ -20,6 +20,7 @@ class cCart extends CI_Controller
 			'qty' => '1',
 			'stok' => $produk->stok
 		);
+		// var_dump($data);
 		$this->cart->insert($data);
 		$this->session->set_flashdata('success', 'Produk berhasil masuk ke keranjang!');
 		redirect('Frontend/cKatalog');
