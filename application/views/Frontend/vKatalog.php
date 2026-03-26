@@ -41,6 +41,12 @@
 						<div class="row g-4 product">
 							<?php
 							foreach ($produk as $key => $value) {
+								//diskon produk pengguna baru 5%
+								if ($this->session->userdata('level_member') == '1') {
+									$harga = $value->harga - (0.05 * $value->harga);
+								} else {
+									$harga = $value->harga;
+								}
 							?>
 								<div class="col-lg-4">
 									<div class="product-item rounded wow fadeInUp" data-wow-delay="0.1s">
@@ -52,7 +58,11 @@
 												<small class="d-block mb-2">Stok: <?= $value->stok ?></small>
 												<a href="<?= base_url('Frontend/cKatalog/detail_produk/' . $value->id_produk) ?>" class="d-block h4"><?= $value->nama_produk ?> </a>
 
-												<span class="text-primary fs-5">Rp. <?= number_format($value->harga) ?></span>
+												<span class="text-primary fs-5">Rp. <?= number_format($harga) ?><?php if ($this->session->userdata('level_member') == '1') {
+																												?>
+													<del>Rp. <?= number_format($value->harga) ?></del>
+												<?php
+																												} ?> </span>
 											</div>
 										</div>
 										<?php

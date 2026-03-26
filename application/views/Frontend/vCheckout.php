@@ -84,12 +84,39 @@
 									</th>
 									<td class="py-4">
 										<p class="mb-0 text-dark text-uppercase py-2">TOTAL</p>
+
 									</td>
 									<td class="py-4"></td>
 									<td class="py-4"></td>
 									<td class="py-4">
 										<div class="py-2 text-center border-bottom border-top">
 											<p class="mb-0 text-dark">Rp. <?= number_format($this->cart->total()) ?></p>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+									</th>
+									<td class="py-4">
+										<p class="mb-0 text-dark text-uppercase py-2">POTONGAN HARGA</p>
+
+										<?php
+										//potongan harga jika pembelanjaan minimal 1juta - 50rbu
+										if ($this->cart->total() >= 1000000) {
+											echo '<p class="text-danger">Rp. 50.000</p>';
+											$potongan_harga = $this->cart->total() - 50000;
+										} else {
+											echo '<p class="text-danger">Minimal pembelian sebesar Rp. 1.000.000</p>';
+											$potongan_harga = '0';
+										}
+
+										?>
+									</td>
+									<td class="py-4"></td>
+									<td class="py-4"></td>
+									<td class="py-4">
+										<div class="py-2 text-center border-bottom border-top">
+											<p class="mb-0 text-dark">Rp. <?= number_format($potongan_harga) ?></p>
 										</div>
 									</td>
 								</tr>

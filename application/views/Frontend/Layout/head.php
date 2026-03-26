@@ -115,7 +115,7 @@
 					if ($qty != '0') {
 					?>
 						<a href="<?= base_url('Frontend/cCart') ?>" class="text-muted d-flex align-items-center justify-content-center"><span class="rounded-circle btn-md-square border"><i class="fas fa-shopping-cart"></i><span class="badge bg-warning"><?= $qty ?></span></span>
-							<span class="text-dark ms-2">Rp. <?= number_format($price) ?></span></a>
+							<span class="text-dark ms-2">Rp. <?= number_format($this->cart->total()) ?></span></a>
 					<?php
 					}
 					?>

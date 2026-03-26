@@ -109,9 +109,15 @@
 			//menghitung total bayar
 			var ongkir = $("option:selected", this).attr('ongkir');
 
+			<?php
+			if ($this->cart->total() >= 1000000) {
+				$ph = $this->cart->total() - 50000;
+			} else {
+				$ph = $this->cart->total();
+			}
+			?>
 
-
-			var total_bayar = parseInt(ongkir) + parseInt(<?= $this->cart->total() ?>);
+			var total_bayar = parseInt(ongkir) + parseInt(<?= $ph ?>);
 			var reverse2 = total_bayar.toString().split('').reverse().join(''),
 				ribuan_total = reverse2.match(/\d{1,3}/g);
 			ribuan_total = ribuan_total.join(',').split('').reverse().join('');

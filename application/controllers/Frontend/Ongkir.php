@@ -183,7 +183,7 @@ class Ongkir extends CI_Controller
 	}
 	public function paket()
 	{
-		$id_kota_asal = 211;
+		$id_kota_asal = 1224;
 		$expedisi = $this->input->post('expedisi');
 		$id_kecamatan = $this->input->post('id_kecamatan');
 		// $id_desa = $this->input->post('id_desa');

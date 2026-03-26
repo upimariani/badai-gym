@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2025 at 02:39 PM
+-- Generation Time: Feb 24, 2026 at 02:22 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -534,14 +534,14 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `deskripsi`, `stok`, `gambar`, `harga`) VALUES
-(1, 'Protein Shake (Vanilla)', 'Protein shake F1 dari herbalife isi 550grm ', 99, 'WhatsApp_Image_2025-12-11_at_07_14_04.jpeg', 480000),
-(2, 'Protein Shake ( Coklat)', 'Protein shake F1 dari herbalife isi 550grm', 48, 'WhatsApp_Image_2025-12-11_at_07_14_041.jpeg', 480000),
-(3, 'Protein Shake (Choco Mint)', 'Protein shake F1 dari herbalife isi 550grm', 90, 'WhatsApp_Image_2025-12-11_at_07_14_042.jpeg', 480000),
-(4, 'Protein Shake (Strawberry)', 'Protein shake F1 dari herbalife isi 550grm', 30, 'WhatsApp_Image_2025-12-11_at_07_14_043.jpeg', 480000),
-(5, 'Protein Shake (Cookies and Cream)', 'Protein shake F1 dari herbalife isi 550grm', 50, 'WhatsApp_Image_2025-12-11_at_07_14_044.jpeg', 480000),
-(6, 'Baju Jersey Pria (Hitam)', 'Bahan terasa sejuk dan nyaman di kulit, menyerap keringat dan dapat mengeringkan keringat dengan cepat. ', 20, 'WhatsApp_Image_2025-12-11_at_07_08_56.jpeg', 103000),
-(7, 'Baju Jersey Pria ( Abu )', 'Bahan terasa sejuk dan nyaman di kulit, menyerap keringat dan dapat mengeringkan keringat dengan cepat.', 20, 'WhatsApp_Image_2025-12-11_at_07_08_561.jpeg', 103000),
-(8, 'Baju Jersey Pria ( Hijau Tosca )', 'Bahan terasa sejuk dan nyaman di kulit, menyerap keringat dan dapat mengeringkan keringat dengan cepat.', 20, 'WhatsApp_Image_2025-12-11_at_07_08_562.jpeg', 103000);
+(1, 'Protein Shake Malt', 'Protein shake F1 dari herbalife isi 550grm ', 99, 'a.jpeg', 480000),
+(2, 'Protein Shake Coklat', 'Protein shake F1 dari herbalife isi 550grm', 48, 'a.jpeg', 480000),
+(3, 'Protein Shake (Choco Mint)', 'Protein shake F1 dari herbalife isi 550grm', 90, 'a.jpeg', 480000),
+(4, 'Protein Shake (Strawberry)', 'Protein shake F1 dari herbalife isi 550grm', 30, 'a.jpeg', 480000),
+(5, 'Protein Shake (Cookies and Cream)', 'Protein shake F1 dari herbalife isi 550grm', 50, 'a.jpeg', 480000),
+(6, 'Baju Jersey Pria (Hitam)', 'Bahan terasa sejuk dan nyaman di kulit, menyerap keringat dan dapat mengeringkan keringat dengan cepat. ', 20, 'b.jpeg', 103000),
+(7, 'Baju Jersey Pria ( Abu )', 'Bahan terasa sejuk dan nyaman di kulit, menyerap keringat dan dapat mengeringkan keringat dengan cepat.', 20, 'b.jpeg', 103000),
+(8, 'Baju Jersey Pria ( Hijau Tosca )', 'Bahan terasa sejuk dan nyaman di kulit, menyerap keringat dan dapat mengeringkan keringat dengan cepat.', 20, 'b.jpeg', 103000);
 
 -- --------------------------------------------------------
 
